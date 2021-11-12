@@ -1,7 +1,8 @@
-package com.diatoz.bestpractices
+package com.diatoz.bestpractices.signup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.diatoz.bestpractices.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

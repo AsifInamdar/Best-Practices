@@ -4,15 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".signup.MainActivity">
 
-    <TextView
+    <com.diatoz.bestpractices.ui.CustomSeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        app:circle_gradient_angle="30"
+        app:circle_gradient_end_color="@color/dimcolor"
+        app:circle_gradient_start_color="@color/lightcolor"
+        app:circle_progress_gradient_angle="70"
+        app:circle_progress_gradient_end_color="@color/dimcolor"
+        app:circle_progress_gradient_start_color="@color/lightcolor"
+        app:circle_stroke_width="23dp"
+        app:circle_x_radius="100dp"
+        app:circle_y_radius="100dp"
+        app:end_angle="360"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:max="100"
+        app:pointer_color="@android:color/white"
+        app:pointer_halo_border_width="5dp"
+        app:pointer_halo_width="5dp"
+        app:pointer_radius="8dp"
+        app:progress="50"
+        app:start_angle="180" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="default_thumb_color">#ff6f00</color>
+
+    <array name="gradient_seekbar">
+        <item>@color/lightcolor</item>
+        <item>@color/dimcolor</item>
+    </array>
+
+    <array name="default_track_gradient">
+        <item>@color/lightcolor</item>
+        <item>@color/dimcolor</item>
+    </array>
+
+    <color name="lightcolor">#fad593</color>
+    <color name="normalcolor">#ebe9e9</color>
+    <color name="dimcolor">#a1eef5</color>
 </resources>
