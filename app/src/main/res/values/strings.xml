@@ -8,4 +8,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="please_select_days">Please select the days</string>
+    <string name="please_select_time">Please select the time</string>
+
 </resources>

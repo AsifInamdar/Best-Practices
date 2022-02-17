@@ -22,5 +22,8 @@
 
     <color name="lightcolor">#fad593</color>
     <color name="normalcolor">#ebe9e9</color>
+    <color name="app_bg">#55ebe9e9</color>
     <color name="dimcolor">#a1eef5</color>
+
+    <color name="theme_positive_color">#4A87EE</color>
 </resources>
