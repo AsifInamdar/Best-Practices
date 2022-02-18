@@ -24,6 +24,8 @@ class ScheduleListActivity : AppCompatActivity() {
             adapterScheduleList.notifyDataSetChanged()
         }
 
+
+
         fab_add_schedule.setOnClickListener {
             startActivity(Intent(this, AddTimeActivity::class.java))
         }
