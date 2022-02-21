@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".signup.MainActivity">
 
-    <com.diatoz.bestpractices.ui.CustomSeekBar
+    <com.diatoz.bestpractices.ui.custom.CustomSeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:circle_gradient_angle="30"

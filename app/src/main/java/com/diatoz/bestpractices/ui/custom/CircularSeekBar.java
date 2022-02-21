@@ -1,4 +1,4 @@
-package com.diatoz.bestpractices.ui;
+package com.diatoz.bestpractices.ui.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;

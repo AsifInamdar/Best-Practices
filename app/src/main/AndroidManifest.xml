@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.diatoz.bestpractices">
 
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="false"
@@ -12,6 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BestPractices">
         <activity
+            android:name=".ui.activities.ComposeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_compose"
+            android:theme="@style/Theme.BestPractices" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".alarm.AlarmLogsActivity"
             android:exported="false"
             android:theme="@style/Theme.NoActionBar" />
@@ -19,11 +30,11 @@
             android:name=".alarm.ScheduleListActivity"
             android:exported="true"
             android:theme="@style/Theme.NoActionBar">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".signup.MainActivity">
 

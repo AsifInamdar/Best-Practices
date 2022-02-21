@@ -1,4 +1,4 @@
-package com.diatoz.bestpractices.ui;
+package com.diatoz.bestpractices.ui.custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

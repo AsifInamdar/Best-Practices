@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.diatoz.bestpractices.R
 import com.diatoz.bestpractices.database.AppDatabase
 import com.diatoz.bestpractices.database.ScheduleEntity
-import kotlinx.android.synthetic.main.activity_add_time.*
+import com.diatoz.bestpractices.databinding.ActivityAddTimeBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -33,15 +33,19 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
     var endMinute: Int? = 0
 
     private lateinit var myDatabase: AppDatabase
+    private lateinit var binding: ActivityAddTimeBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_time)
+        binding = ActivityAddTimeBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         job = Job()
         myDatabase = AppDatabase.invoke(this)
 
-        saveTimerButton.setOnClickListener {
+        binding.saveTimerButton.setOnClickListener {
             when {
                 startTime == null -> {
                     showToast(this, getString(R.string.please_select_time))
@@ -49,7 +53,7 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
                 days.isEmpty() -> {
                     showToast(this, getString(R.string.please_select_days))
                 }
-                alarm_name.text.isEmpty() -> showToast(this, "Please enter schedule name")
+                binding.alarmName.text.isEmpty() -> showToast(this, "Please enter schedule name")
                 else -> {
                     addScheduleDay()
                 }
@@ -62,33 +66,33 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
         endHour = calendar.get(Calendar.HOUR_OF_DAY)
         endMinute = calendar.get(Calendar.MINUTE)
 
-        end_time_layout.visibility = View.GONE
+        binding.endTimeLayout.visibility = View.GONE
 
-        add_start_time.setOnClickListener {
+        binding.addStartTime.setOnClickListener {
             selectTime("start")
         }
 
-        add_end_time.setOnClickListener {
+        binding.addEndTime.setOnClickListener {
             selectTime("end")
         }
 
-        set_start_time_schedule_tv.setOnClickListener {
+        binding.setStartTimeScheduleTv.setOnClickListener {
             selectTime("start")
         }
 
-        set_end_time_schedule_tv.setOnClickListener {
+        binding.setEndTimeScheduleTv.setOnClickListener {
             selectTime("end")
         }
 
-        backArrowScheduleTimer.setOnClickListener { onBackPressed() }
+        binding.backArrowScheduleTimer.setOnClickListener { onBackPressed() }
 
-        day_sun.setOnCheckedChangeListener(dayCheckListener)
-        day_mon.setOnCheckedChangeListener(dayCheckListener)
-        day_tue.setOnCheckedChangeListener(dayCheckListener)
-        day_wed.setOnCheckedChangeListener(dayCheckListener)
-        day_thu.setOnCheckedChangeListener(dayCheckListener)
-        day_fri.setOnCheckedChangeListener(dayCheckListener)
-        day_sat.setOnCheckedChangeListener(dayCheckListener)
+        binding.daySun.setOnCheckedChangeListener(dayCheckListener)
+        binding.dayMon.setOnCheckedChangeListener(dayCheckListener)
+        binding.dayTue.setOnCheckedChangeListener(dayCheckListener)
+        binding.dayWed.setOnCheckedChangeListener(dayCheckListener)
+        binding.dayThu.setOnCheckedChangeListener(dayCheckListener)
+        binding.dayFri.setOnCheckedChangeListener(dayCheckListener)
+        binding.daySat.setOnCheckedChangeListener(dayCheckListener)
     }
 
     override fun onBackPressed() {
@@ -98,25 +102,25 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
 
     private var dayCheckListener = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
         if (isChecked) {
-            if (buttonView?.text.toString() == "T" && buttonView!!.id == day_tue.id) {
+            if (buttonView?.text.toString() == "T" && buttonView!!.id == binding.dayTue.id) {
                 days.add("Tu")
-            } else if (buttonView?.text.toString() == "T" && buttonView!!.id == day_thu.id) {
+            } else if (buttonView?.text.toString() == "T" && buttonView!!.id == binding.dayThu.id) {
                 days.add("Th")
-            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == day_sun.id) {
+            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == binding.daySun.id) {
                 days.add("Su")
-            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == day_sat.id) {
+            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == binding.daySat.id) {
                 days.add("Sa")
             } else
                 days.add(buttonView?.text.toString())
         } else {
 
-            if (buttonView?.text.toString() == "T" && buttonView!!.id == day_tue.id) {
+            if (buttonView?.text.toString() == "T" && buttonView!!.id == binding.dayTue.id) {
                 days.remove("Tu")
-            } else if (buttonView?.text.toString() == "T" && buttonView!!.id == day_thu.id) {
+            } else if (buttonView?.text.toString() == "T" && buttonView!!.id == binding.dayThu.id) {
                 days.remove("Th")
-            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == day_sun.id) {
+            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == binding.daySun.id) {
                 days.remove("Su")
-            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == day_sat.id) {
+            } else if (buttonView?.text.toString() == "S" && buttonView!!.id == binding.daySat.id) {
                 days.remove("Sa")
             } else
                 days.remove(buttonView?.text.toString())
@@ -166,7 +170,7 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
             scheduleEntity.friday = days.contains("F")
             scheduleEntity.saturday = days.contains("Sa")
             scheduleEntity.id = scheduleId
-            scheduleEntity.scheduleName = alarm_name.text.toString()
+            scheduleEntity.scheduleName = binding.alarmName.text.toString()
 
             myDatabase.scheduleDao().insertSchedule(scheduleEntity)
 
@@ -202,9 +206,7 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
             endTimePicker.visibility = View.VISIBLE
         }
 
-        //if (scheduleName.equals("sleep", true)) {
         rbCompletion.visibility = View.GONE
-        //}
 
         startTimePicker.hour = startHour!!
         startTimePicker.minute = startMinute!!
@@ -223,30 +225,21 @@ class AddTimeActivity : AppCompatActivity(), CoroutineScope {
         }
 
         btnOkay?.setOnClickListener {
-            /*if (!scheduleName.equals("sleep", true)) {
-                endTime = endTimePicker.hour.toString() + ":" + endTimePicker.minute
-                endHour = endTimePicker.hour
-                endMinute = endTimePicker.minute
-
-                debug("endTime", "$endTime")
-                set_end_time_schedule_tv.text =
-                    get12HourFormat(endTimePicker.hour, endTimePicker.minute)
-            }*/
             startTime = startTimePicker.hour.toString() + ":" + startTimePicker.minute
             startHour = startTimePicker.hour
             startMinute = startTimePicker.minute
 
             debug("startTime", "$startTime")
-            set_start_time_schedule_tv.text =
+            binding.setStartTimeScheduleTv.text =
                 get12HourFormat(startTimePicker.hour, startTimePicker.minute)
 
-            add_end_time.visibility = View.GONE
-            add_start_time.visibility = View.GONE
+            binding.addEndTime.visibility = View.GONE
+            binding.addStartTime.visibility = View.GONE
 
-            set_end_time_schedule_tv.visibility = View.VISIBLE
-            set_end_time_iv.visibility = View.VISIBLE
-            set_start_time_schedule_tv.visibility = View.VISIBLE
-            set_start_time_iv.visibility = View.VISIBLE
+            binding.setEndTimeScheduleTv.visibility = View.VISIBLE
+            binding.setEndTimeIv.visibility = View.VISIBLE
+            binding.setStartTimeScheduleTv.visibility = View.VISIBLE
+            binding.setStartTimeIv.visibility = View.VISIBLE
 
             alertDialog.dismiss()
         }

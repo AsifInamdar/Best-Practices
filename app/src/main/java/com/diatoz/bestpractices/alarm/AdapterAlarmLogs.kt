@@ -8,14 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.diatoz.bestpractices.R
 import com.diatoz.bestpractices.database.AlarmLogs
-import kotlinx.android.synthetic.main.adapter_schedule_list.view.*
 
 class AdapterAlarmLogs(val context: Context, private val list: MutableList<AlarmLogs>) :
     RecyclerView.Adapter<AdapterAlarmLogs.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTime: TextView = view.tv_time
-        val tvName: TextView = view.tv_name
+        val tvTime: TextView = view.findViewById(R.id.tv_time)
+        val tvName: TextView = view.findViewById(R.id.tv_name)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

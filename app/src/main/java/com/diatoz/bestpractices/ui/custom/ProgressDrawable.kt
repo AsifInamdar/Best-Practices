@@ -1,4 +1,4 @@
-package com.android.bestpractices.ui.gaugeSeekbar
+package com.diatoz.bestpractices.ui.custom
 
 import android.graphics.*
 

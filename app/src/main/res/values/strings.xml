@@ -10,5 +10,6 @@
 
     <string name="please_select_days">Please select the days</string>
     <string name="please_select_time">Please select the time</string>
+    <string name="title_activity_compose">ComposeActivity</string>
 
 </resources>

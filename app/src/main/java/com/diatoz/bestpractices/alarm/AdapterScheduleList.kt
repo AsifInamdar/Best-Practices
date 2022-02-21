@@ -9,21 +9,20 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.diatoz.bestpractices.R
 import com.diatoz.bestpractices.database.ScheduleEntity
-import kotlinx.android.synthetic.main.adapter_schedule_list.view.*
 
 class AdapterScheduleList(val context: Context, private val list: List<ScheduleEntity>) :
     RecyclerView.Adapter<AdapterScheduleList.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTime: TextView = view.tv_time
-        val tvName: TextView = view.tv_name
-        val tvSun: TextView = view.day_sun
-        val tvMon: TextView = view.day_mon
-        val tvTue: TextView = view.day_tue
-        val tvWed: TextView = view.day_wed
-        val tvThu: TextView = view.day_thu
-        val tvFri: TextView = view.day_fri
-        val tvSat: TextView = view.day_sat
+        val tvTime: TextView = view.findViewById(R.id.tv_time)
+        val tvName: TextView = view.findViewById(R.id.tv_name)
+        val tvSun: TextView = view.findViewById(R.id.day_sun)
+        val tvMon: TextView = view.findViewById(R.id.day_mon)
+        val tvTue: TextView = view.findViewById(R.id.day_tue)
+        val tvWed: TextView = view.findViewById(R.id.day_wed)
+        val tvThu: TextView = view.findViewById(R.id.day_thu)
+        val tvFri: TextView = view.findViewById(R.id.day_fri)
+        val tvSat: TextView = view.findViewById(R.id.day_sat)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
