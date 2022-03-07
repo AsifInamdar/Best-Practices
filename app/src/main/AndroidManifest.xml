@@ -12,15 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BestPractices">
         <activity
-            android:name=".ui.activities.ComposeActivity"
-            android:exported="true"
-            android:label="@string/title_activity_compose"
-            android:theme="@style/Theme.BestPractices" >
+            android:name=".ui.activities.GoogleSignInActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.ComposeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BestPractices">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".alarm.AlarmLogsActivity"

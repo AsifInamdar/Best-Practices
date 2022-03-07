@@ -40,12 +40,12 @@ fun setAlarm(
         set(Calendar.MILLISECOND, 0)
     }
 
-    /*alarmManager.setExactAndAllowWhileIdle(
+    alarmManager.setExactAndAllowWhileIdle(
         AlarmManager.RTC_WAKEUP,
         calendarEnd.timeInMillis,
         pendingIntent
-    )*/
-    alarmManager.setAlarmClock(AlarmManager.AlarmClockInfo(calendarEnd.timeInMillis, pendingIntent), pendingIntent)
+    )
+    //alarmManager.setAlarmClock(AlarmManager.AlarmClockInfo(calendarEnd.timeInMillis, pendingIntent), pendingIntent)
     debug("Alarm", "has been set for $hour : $minute for alarm id : $alarmId")
 }
 
