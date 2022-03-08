@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activities.DraggableViewActivity">
+
+    <TextView
+        android:id="@+id/draggableView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/lightcolor"
+        android:gravity="center"
+        android:minWidth="100dp"
+        android:minHeight="60dp"
+        android:text="Test Drag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/drag_icon_bottom_right"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginBottom="-10dp"
+        android:visibility="gone"
+        android:background="@drawable/round_day_selected"
+        app:layout_constraintBottom_toBottomOf="@+id/draggableView"
+        app:layout_constraintStart_toEndOf="@+id/draggableView" />
+
+    <ImageView
+        android:id="@+id/drag_icon_top_left"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="-10dp"
+        android:visibility="gone"
+        android:background="@drawable/round_day_selected"
+        app:layout_constraintTop_toTopOf="@+id/draggableView"
+        app:layout_constraintStart_toStartOf="@+id/draggableView" />
+</FrameLayout>
