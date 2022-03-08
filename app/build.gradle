@@ -1,23 +1,36 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    //id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
 android {
     signingConfigs {
-        debug {
-            storeFile file('D:\\Work\\best-practices\\keystore\\best-practices.jks')
-            storePassword 'A$!f@814786'
-            keyPassword 'A$!f@814786'
-            keyAlias 'asif'
-        }
         release {
-            storeFile file('D:\\Work\\best-practices\\keystore\\best-practices.jks')
-            storePassword 'A$!f@814786'
-            keyAlias 'asif'
-            keyPassword 'A$!f@814786'
+            def release_keystore = file("keystore/practices.jks")
+            if (release_keystore.exists()) {
+                def release_props = file("keystore/best_practices_release.properties")
+                def props = new Properties()
+                release_props.withInputStream { props.load(it) }
+
+                storeFile release_keystore
+                storePassword props.storePassword
+                keyAlias props.keyAlias
+                keyPassword props.keyPassword
+            }
+        }
+        debug {
+            def debug_keystore = file("keystore/practices.jks")
+            if (debug_keystore.exists()) {
+                def debug_props = file("keystore/best_practices_release.properties")
+                def props = new Properties()
+                debug_props.withInputStream { props.load(it) }
+
+                storeFile debug_keystore
+                storePassword props.storePassword
+                keyAlias props.keyAlias
+                keyPassword props.keyPassword
+            }
         }
     }
     compileSdkVersion 31
