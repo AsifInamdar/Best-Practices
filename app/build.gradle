@@ -6,31 +6,20 @@ plugins {
 
 android {
     signingConfigs {
-        release {
-            def release_keystore = file("keystore/practices.jks")
-            if (release_keystore.exists()) {
-                def release_props = file("keystore/best_practices_release.properties")
-                def props = new Properties()
-                release_props.withInputStream { props.load(it) }
+        def props = new Properties()
+        props.load(new FileInputStream(file("keystore/best_practices_release.properties")))
 
-                storeFile release_keystore
-                storePassword props.storePassword
-                keyAlias props.keyAlias
-                keyPassword props.keyPassword
-            }
+        release {
+            storeFile file(props['keyStore'])
+            storePassword props['storePassword']
+            keyAlias props['keyAlias']
+            keyPassword props['keyPassword']
         }
         debug {
-            def debug_keystore = file("keystore/practices.jks")
-            if (debug_keystore.exists()) {
-                def debug_props = file("keystore/best_practices_release.properties")
-                def props = new Properties()
-                debug_props.withInputStream { props.load(it) }
-
-                storeFile debug_keystore
-                storePassword props.storePassword
-                keyAlias props.keyAlias
-                keyPassword props.keyPassword
-            }
+            storeFile file(props['keyStore'])
+            storePassword props['storePassword']
+            keyAlias props['keyAlias']
+            keyPassword props['keyPassword']
         }
     }
     compileSdkVersion 31
