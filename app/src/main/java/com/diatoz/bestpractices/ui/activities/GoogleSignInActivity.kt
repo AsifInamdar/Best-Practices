@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.diatoz.bestpractices.R
 import com.diatoz.bestpractices.databinding.ActivityGoogleSignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -37,6 +38,7 @@ class GoogleSignInActivity : AppCompatActivity() {
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
+            .requestIdToken(getString(R.string.google_client_id))
             .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
@@ -83,6 +85,7 @@ class GoogleSignInActivity : AppCompatActivity() {
     private fun setDetails(account: GoogleSignInAccount) {
         account.displayName?.let { Log.i("google name", it) }
         account.email?.let { Log.i("google email", it) }
+        account.idToken?.let { Log.i("google token", it) }
 
         binding.details.text = account.displayName + "\n" + account.email
     }

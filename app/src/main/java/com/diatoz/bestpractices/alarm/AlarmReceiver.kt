@@ -58,6 +58,17 @@ class AlarmReceiver : BroadcastReceiver(), CoroutineScope {
                 schedule = entity.scheduleName!!
             )
             myDatabase.alarmLogsDao().insertLog(log)
+
+            var day = calendar.get(Calendar.DAY_OF_MONTH) + 1
+
+            setAlarm(
+                scheduleId,
+                entity.scheduleStartHourTime,
+                entity.scheduleStartMinuteTime,
+                scheduleId,
+                context,
+                day
+            )
         }
     }
 

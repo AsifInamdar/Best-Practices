@@ -14,11 +14,11 @@
         <activity
             android:name=".ui.activities.GoogleSignInActivity"
             android:exported="true">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.activities.ComposeActivity"
@@ -41,11 +41,11 @@
             android:name=".alarm.ScheduleListActivity"
             android:exported="true"
             android:theme="@style/Theme.NoActionBar">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity android:name=".signup.MainActivity">
 
